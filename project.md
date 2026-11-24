@@ -31,7 +31,6 @@ from sklearn.model_selection import cross_val_score
 
 ## Import
 
-**Task 5.5.1**
 
 
 ```python
@@ -45,11 +44,7 @@ print(type(taiwan_data))
     <class 'dict'>
 
 
-**Task 5.5.2**
 
-<div class="alert alert-info" role="alert">
-    <b>Tip:</b> The data in this assignment might be organized differently than the data from the project, so be sure to inspect it first. 
-</div>
 
 
 ```python
@@ -60,7 +55,7 @@ print(taiwan_data_keys)
     dict_keys(['schema', 'metadata', 'observations'])
 
 
-**Task 5.5.3**
+
 
 
 ```python
@@ -71,7 +66,7 @@ print(n_companies)
     6137
 
 
-**Task 5.5.4**
+
 
 
 ```python
@@ -82,7 +77,6 @@ print(n_features)
     97
 
 
-**Task 5.5.5**
 
 
 ```python
@@ -303,7 +297,7 @@ df.head()
 
 ## Explore
 
-**Task 5.5.6**
+
 
 
 ```python
@@ -327,20 +321,10 @@ nans_by_col.head()
 
 
 
-<div class="alert alert-info" role="alert">
-  <strong>Slight Code Change</strong>
-
-In the following task, you'll notice a small change in how plots are created compared to what you saw in the lessons.
-While the lessons use the global matplotlib method like <code>plt.plot(...)</code>, in this task, you are expected to use the object-oriented (OOP) API instead.
-This means creating your plots using <code>fig, ax = plt.subplots()</code> and then calling plotting methods on the <code>ax</code> object, such as <code>ax.plot(...)</code>, <code>ax.hist(...)</code>, or <code>ax.scatter(...)</code>.
-
-If you're using pandas’ or seaborn’s built-in plotting methods (like <code>df.plot()</code> or <code>sns.lineplot()</code>), make sure to pass the <code>ax=ax</code> argument so that the plot is rendered on the correct axes.
-
-This approach is considered best practice and will be used consistently across all graded tasks that involve matplotlib.
-</div>
 
 
-**Task 5.5.7**
+
+
 
 
 ```python
@@ -361,7 +345,7 @@ plt.show()
 
 ## Split
 
-**Task 5.5.8**
+
 
 
 ```python
@@ -376,7 +360,7 @@ print("y shape:", y.shape)
     y shape: (6137,)
 
 
-**Task 5.5.9**
+
 
 
 ```python
@@ -395,7 +379,7 @@ print("y_test shape:", y_test.shape)
 
 ## Resample
 
-**Task 5.5.10**
+
 
 
 ```python
@@ -584,7 +568,7 @@ X_train_over.head()
 
 ## Iterate
 
-**Task 5.5.11**
+
 
 
 ```python
@@ -599,11 +583,8 @@ clf.fit(X_train_over, y_train_over)
 
 
 
-**Task 5.5.12**
 
-<div class="alert alert-info" role="alert">
-    <p><b>Tip:</b> Use your CV scores to evaluate different classifiers. Choose the one that gives you the best scores.</p>
-</div>
+
 
 
 ```python
@@ -622,7 +603,7 @@ print(cv_scores)
 
 
 ```python
-# Run this code cell
+
 
 params = {
     "max_depth": range(30, 50, 10),
@@ -630,7 +611,7 @@ params = {
 }
 ```
 
-**Task 5.5.13**
+
 
 
 ```python
@@ -643,7 +624,7 @@ model = GridSearchCV(
 )
 ```
 
-**Ungraded Task:** Fit your model to the over-sampled training data. 
+Fitting the model to the over-sampled training data. 
 
 
 ```python
@@ -666,7 +647,6 @@ model.fit(X_train_over, y_train_over)
 
 
 
-**Task 5.5.14**
 
 
 ```python
@@ -791,7 +771,7 @@ cv_results.head(5)
 
 
 
-**Task 5.5.15**
+
 
 
 ```python
@@ -804,7 +784,7 @@ print(best_params)
 
 ## Evaluate
 
-**Ungraded Task:** Test the quality of your model by calculating accuracy scores for the training and test data.
+Testing the quality of the model by calculating accuracy scores for the training and test data.
 
 
 ```python
@@ -819,11 +799,11 @@ print("Model Test Accuracy:", round(acc_test, 4))
     Model Test Accuracy: 0.9772
 
 
-**Task 5.5.16**
+
 
 
 ```python
-# write code here
+
 confusionmatrix = confusion_matrix(y_test, model.predict(X_test))
 fig, ax = plt.subplots()
 dis = ConfusionMatrixDisplay(confusion_matrix=confusionmatrix, display_labels=model.classes_)
@@ -843,7 +823,7 @@ dis.plot(ax=ax, colorbar=True)
     
 
 
-**Task 5.5.17**
+
 
 
 ```python
@@ -864,7 +844,7 @@ print(class_report)
 
 # Communicate
 
-**Task 5.5.18**
+
 
 
 ```python
@@ -897,7 +877,7 @@ plt.show()
     
 
 
-**Task 5.5.19**
+
 
 
 ```python
@@ -906,12 +886,12 @@ with open("model-5-5.pkl", "wb") as f:
     pickle.dump(model, f)
 ```
 
-**Task 5.5.20**
+
 
 
 ```python
 # Import your module
-from my_predictor_assignment import make_predictions
+from my_predictor import make_predictions
 
 # Generate predictions
 y_test_pred = make_predictions(
@@ -937,14 +917,5 @@ y_test_pred.head()
     38    False
     Name: bankrupt, dtype: bool
 
-
-
-<div class="alert alert-info" role="alert">
-    <b>Tip:</b> If you get an <code style="color:#E45E5C;background-color:#FEDDDE">ImportError</code> when you try to import <code>make_predictions</code> from <code>my_predictor_assignment</code>, try restarting your kernel. Go to the <b>Kernel</b> menu and click on  <b>Restart Kernel and Clear All Outputs</b>. Then rerun just the cell above. ☝️
-</div>
-
----
-Copyright 2023 WorldQuant University. This
-content is licensed solely for personal use. Redistribution or
 publication of this material is strictly prohibited.
 
